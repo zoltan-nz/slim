@@ -280,6 +280,6 @@ module Slim
     register :ruby,       RubyEngine
 
     # Embedded Emblem
-    register :emblem,     EmblemEngine
+    register :emblem,     TagEngine, :pretty, :tag => :script, :attributes => { :type => 'text/x-emblem'}
   end
 end
