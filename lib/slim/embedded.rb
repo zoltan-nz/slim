@@ -233,6 +233,16 @@ module Slim
       end
     end
 
+    class EmblemEngine < TagEngine
+      disable_option_validator!
+
+      set_default_options :tag => :script, :attributes => { :type => 'text/x-emlem' }
+
+      def on_slim_embedded(engine, body)
+        super(engine, [:html, :js, body])
+      end
+    end
+
     # Embeds ruby code
     class RubyEngine < Engine
       def on_slim_embedded(engine, body)
@@ -268,5 +278,8 @@ module Slim
 
     # Embedded ruby code
     register :ruby,       RubyEngine
+
+    # Embedded Emblem
+    register :emblem,     EmblemEngine
   end
 end
